@@ -14,3 +14,17 @@ test('Shows buttons', () => {
     container.getByText(/lock gate/i);
     container.getByText(/close gate/i);
 });
+
+test('Shows correct text with true props', () => {
+    const container = render(<Controls locked={true} closed={true} />);
+
+    container.getByText(/unlock gate/i);
+    container.getByText(/open gate/i)
+});
+
+test('Shows correct text with false props', () => {
+    const container = render(<Controls locked={false} closed={false} />);
+
+    container.getByText(/lock gate/i);
+    container.getByText(/close gate/i)
+});
